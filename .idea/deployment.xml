@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" autoUpload="Always" serverName="cafe.cis.strath.ac.uk" remoteFilesAllowedToDisappearOnAutoupload="false">
+    <serverData>
+      <paths name="cafe.cis.strath.ac.uk">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/Assess2/JT1203" local="$PROJECT_DIR$" web="https://devweb2021.cis.strath.ac.uk/~cxb19188/WadAsses2/Assess/JT1203" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+    <option name="myAutoUpload" value="ALWAYS" />
+  </component>
+</project>
