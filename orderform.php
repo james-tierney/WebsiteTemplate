@@ -1,3 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>ArtWork System</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href=form.css rel="stylesheet" type="text/css">
+
+    <!-- remember add in the jquery part to keep the navbar consistently throughout all pages in the site  -->
+
+</head>
+<body>
 <?php
     //require("artlisting.php");
     $host = "devweb2021.cis.strath.ac.uk";
@@ -93,29 +105,36 @@
 <form  action="orderform.php" id="orderForm" method="POST">
     <?php //echo "id val = ".$_POST['idValue'];
     //echo "name still = ".$name;?>
-    <p> Name: <input type = "text" name = "name" value ="Name"/>
-    </p>
-    <p> Phone Number: <input type = "text" name = "phone_number" value ="Phone_num"/>
-    </p>
-    <p> Customer Email: <input type="email" name="email" value="Email" />
+    <div>
+        <input type = "text" id="name" name = "name" value ="" required placeholder="Please enter your name"/>
+            <label for="name">Name</label>
+    </div>
 
+    <div>
+          <input type = "text" id="phone_number"name = "phone_number" value ="" placeholder="Enter a valid Phone Number"/>
+            <label for="phone_number">Phone Number</label>
+    </div>
 
-    <p>Postage Address: <input type="text" name="address" value="Address"
-    </p>
+    <div>
+          <input type="email" id="email" name="email" value="" required placeholder="Enter a valid email address"/>
+            <label for="email">Email</label>
 
-    <input id="ID" type="hidden" name="IDValue" value=<?php echo $idVal;?> >
-    <script>
-        console.log(document.getElementById('ID').value);
-    </script>
-    <!--<input id="Name" type="hidden" name="paintName" value=<?php//$name; ?> > -->
+    </div>
 
-    <p>
-        <input type="submit" name="submit" value="Submit">
-    </p>
+    <div>
+        <input type="text" id="address" name="address" value="" placeholder="Please Enter your address"/>
+            <label for="address">Address</label>
+    </div>
 
+        <input id="ID" type="hidden" name="IDValue" value=<?php echo $idVal;?> >
+        <script>
+            console.log(document.getElementById('ID').value);
+        </script>
+        <!--<input id="Name" type="hidden" name="paintName" value=<?php//$name; ?> > -->
 
-
-
+        <p>
+            <input type="submit" name="submit" value="Submit">
+        </p>
 
 
 </form>
@@ -176,6 +195,8 @@
         }
     } */
 ?>
+</body>
+</html>
 
 
 

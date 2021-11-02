@@ -1,0 +1,49 @@
+
+body {
+    background-color:white;
+    color: black;
+}
+
+input {
+    border: 2px solid;
+    border-radius: 4px;
+    font-size: 1rem;
+    margin: 0.25rem;
+    min-width: 125px;
+    padding: 0.5rem;
+    transition: background-color 0.5s ease-out;
+}
+
+/*.password input:invalid:empty {
+    border-color: black;
+} */
+
+input:optional[type=submit] {
+    background-color: #24A0ED;
+    border-color: black;
+}
+
+input:optional:empty {
+    border-color: gray;
+}
+input:required {
+    border-color: deeppink;
+}
+input:invalid {
+    border-color: red;
+}
+
+input:valid {
+    border-color: lightgreen;
+}
+
+input:required:focus:valid {
+    background: lightgreen;
+    background-size: 1em;
+}
+input:focus:invalid {
+    background: lightsalmon;
+    background-size: 1em;
+    border-color: red;   /* css file hasnt updated on the server so commented code above for empty field hasn't registered either as well as this line */
+
+}
