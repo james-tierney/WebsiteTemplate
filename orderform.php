@@ -42,6 +42,9 @@
         $dbEmail = safePOST($conn, "email");
         $dbAddress = safePOST($conn, "address");
         echo "Order Placed";
+        /*
+         * Once order is submitted could take user to page saying order was submitted
+         */
         $sql = "INSERT INTO `ArtOrders` (`Name`, `Phone_num`, `Email`, `Address`, `Painting_name`, `ID`) VALUES ('$dbName', '$dbPhoneNum', '$dbEmail', '$dbAddress', '$name', '$idVal')";
 
         $result = mysqli_query($conn, $sql);

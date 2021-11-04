@@ -11,16 +11,10 @@
 
     function handleClick(evt) {
         let node = evt.target;
-        //document.getElementById($_GET['ID']);
-        //console.log("val now = " + val);
         console.log("The function is running");
         console.log("The event to occur is " + evt);
         console.log("event target = " + evt.target);
         console.log((evt.target.id));
-        //location.assign("orderform.php");
-
-        // we need to write this javascript variable into a hidden input field in a form and give it action to our
-        // new page
 
     }
 
@@ -33,21 +27,10 @@
 
         //let id = buttonID.getAttribute('data-id');
         let id = document.getElementById("myButton").value;
-        //let id = document.getElementById("myButton").value;
         console.log("The value of the id from the doc.getId = " + id);
-        //let form = document.getElementById('orderForm');
-        //form.submit();
-        //console.log(document.getElementById("myButton").innerHTML = buttonID.getAttribute('data-id'));
         if(flag === true) {
-        //    let id = buttonID.getAttribute('data-id');
-          //  console.log(buttonID.getAttribute('data-id'));
-          //  console.log("button id = " + id);
-          //  submitForm(id);
-          //  console.log("BUTTON ID ======== " + id);
-          //  return id;
         }
         return id;
-        //buttonID.getAttribute('data-id'); // this value we want to pass into our form page
     }
 
     function rowID() {
@@ -55,23 +38,11 @@
     }
 
     function submitForm(id) {
-        //if(flag === true) {
-        //let form = document.getElementById('orderForm');
-        //}
-        //form.submit();
         document.getElementById('orderForm').submit();
         console.log("form has been submitted");
         console.log("id = " + id);
         return id;
     }
-    /*function handleClick(evt) {
-        let node = evt.target;
-        if(node.name == 'order') {
-            node.value = "Modify";
-        }
-        console.log("HEllo there");
-        $('#orderForm').toggle();
-    } */
 </script>
 
 
@@ -112,14 +83,7 @@
             echo "<td>".$row['Price']."</td>\n";
             echo "<td>".$row['Description']."</td>\n";
             echo "<td>".$row['ID']."</td>\n";
-            //echo "<td> <button id=".$row['ID']." type='button' name='order' value='Order' onclick=myFunc(this)>Order </button> </td>\n";
-            //echo "<td> <button id='myButton' data-id=".$row['ID']." type='button' name='order' value=".$row['ID']." onclick='myFunc(true)'>Order </button> </td>\n";
-            //print '<td> <button <a href="artlisting.php?id='.$row['ID'].'" onclick="saveID('.$row['ID'].')">Order</a>  </td>';
             print '<td> <button id="button" name="idButton"<a href="artlisting.php?id=button" onclick="saveID('.$row['ID'].')">Order</a>  </td>';
-            // echo "<a href=\"#\" onclick=\"delete_game('" . $title . "');\" class=\"btn\">Delete</a>";
-
-            //echo "<td> <button id='order' type='submit' name='order' value='Order'>Order </button> </td>\n";
-            //<p> <input type="submit" name="submitted"/> </p>
             echo "</tr>\n";
             echo "</p></b>";
 
@@ -140,11 +104,6 @@
         echo isset($_POST['submit']);
 
         $sql = "INSERT INTO `ArtOrders`(`Name`, `Phone_num`, `Email`, `Address`, `Painting_name`, `ID`) VALUES ('$dbName', '$dbPhoneNum', '$dbEmail', '$dbAddress', 'hello world', '00120')";
-        //$sql = "INSERT INTO `ArtOrders` (`Name`, `Phone_num`, `Email`, `Address`, `Painting_name`, `ID`) VALUES ('Tom', '2314', 'hw@mail.com', '325 hugh street', 'hello world', '09')";
-        // second query seems to inseret correctly??
-        //$sql = "INSERT INTO `ArtOrders` (Name, Phone_num, Email, Address, Painting_name, ID) VALUES"
-            //."($dbName, $dbPhoneNum, $dbEmail, $dbAddress)"; ////, '$dbPaintingName', '$dbID')";
-        //."('$dbWidth', '$dbHeight', '$dbPostage', '$dbEmail', '$priceNoVat', now())";
         echo "sql = ".$sql;
 
         $result = mysqli_query($conn, $sql);
@@ -174,34 +133,11 @@
                 form.submit();
                 return v;
             }
-            //function getID() {
-                // use the js code found online then set the document.element id = to the value retunr from the js
-                // then use that val in the form page to get the correct painting
-               // if (document.getElementById('myButton').onclick === true) {
 
-                // problem we are having is that the value from the form is coming back empty wen we neeed the id so we
-                // are trying to set it below here but it seems to have a problem with myfunc
-                    //console.log(document.getElementById('orderID').value = myFunc(true) );
-                    //console.log("Value === " + document.getElementById('orderID').value);
-                //}
-            //}
         </script>
 
 
-    <!--<p> Name: <input type = "text" name = "name" value ="Name"/>
- </p>
- <p> Phone Number: <input type = "text" name = "phone_number" value ="Phone_num"/>
- </p>
- <p> Customer Email: <input type="email" name="email" value="Email" />
 
-
- <p>Postage Address: <input type="text" name="address" value="Address"
- </p>
-
- <p>
-     <input type="submit" name="submit" value="Submit">
- </p>
--->
 </form>
 
 
@@ -219,7 +155,6 @@
 <script>
 
     $(document).ready(function () {
-
         $("#order").click(function () {
             $("#orderForm").toggle();
             console.log("hello this function is running");
