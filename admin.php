@@ -10,6 +10,7 @@
     <meta charset="UTF-8">
     <title>ArtWork System Admin</title>
     <link href="form.css" rel="stylesheet" type="text/css">
+    <link href="table.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 
@@ -33,26 +34,26 @@
         }
     }
 
-    //$password = $_SESSION['password'];
-    //sif (empty($_POST["database"]) || $_POST["database"] != "WannaTellMeHow" ) {
+    function safePOSTSQL($conn, $fieldName)
+    {
+        if (isset($_POST[$fieldName])) {
+            return $conn->real_escape_string(strip_tags($_POST[$fieldName]));
+        } else {
+            return "";
+        }
+    }
+
     if(isset($_SESSION['sessionVal'])) {
         $password = $_SESSION['sessionVal'];
-        echo $password;
-        //echo "session val = ".$sessionVal;
+
         $sessionVal = $_SESSION['sessionVal'];
-        echo "session val = ".$sessionVal;
     }
     else {
         $sessionVal = "";
         $password = safePOSTNotSQL('pass');
-        echo "password from post".$password;
     }
-    //}
 
     if(empty($password) || $password != $correctPass) {
-        echo "password from post".$password;
-        //if(empty($_POST['pass']) || ($_POST['pass'] != $correctPass) ){
-
 
 ?>
 
@@ -64,13 +65,12 @@
 </form>
 
 <?php
-        //echo $_POST['admin'] ;
+
     }
 
     else {
 
-        //$password = $_POST['admin'];
-        //$password = $_POST['pass'];
+    echo "<div id='adminTable'>";
         $_SESSION['sessionVal'] = $password;
 
         if ( $_SESSION['sessionVal'] === $correctPass || ($_SERVER['REQUEST_METHOD'] === 'POST') && ($password === $correctPass)) {
@@ -79,6 +79,7 @@
             $result = $conn->query($sql);
             if ($result->num_rows > 0) {
                 // `Name`, `Phone_num`, `Email`, `Address`, `Painting_name`, `ID`
+                echo "<table id='adminTable' class='styled-table'>\n";
                 echo "<b> </b><thead>";
                 echo "<b> <tr class='active-row'>";
                 echo "<td><b>Name</td>";
@@ -103,7 +104,46 @@
                     echo "<td>" . $row['ID'] . "</td>\n";
                 }
             }
+            echo "</table>\n";
+
         }
+        $conn = new mysqli($host, $user, $pass, $dbname);
+
+        $paintingName = safePOSTSQL($conn, "paintName");
+        $completionDate = safePOSTSQL($conn, "completeDate");
+        $pHeight = safePOSTSQL($conn, "paintHeight");
+        $pWidth = safePOSTSQL($conn, "paintWidth");
+        $pPrice = safePOSTSQL($conn, "paintPrice");
+        $pDescription = safePOSTSQL($conn, "description");
+        $pID = safePOSTSQL($conn, "paintID");
+
+
+    if(($_SERVER['REQUEST_METHOD'] === 'POST') && (isset($_POST['submitPainting']))) {
+        $sql = "INSERT INTO `ArtSystem` (`Name`, `date_of_completion`, `Width`, `Height`, `Price`, `Description`, `ID`) VALUES ('$paintingName','$completionDate','$pHeight','$pWidth','$pPrice','$pDescription', $pID)";
+
+        $result = mysqli_query($conn, $sql);
+
+    }
+        ?>
+    <div id="adminForm">
+       <form action = 'admin.php' class='newItems' method='POST'>
+           <div> <input type = 'text' name ='paintName' value ="" placeholder="Painting name"/> </div>
+           <div> <input type="date" name="completeDate" value="" placeholder="Date Of Completion"/></div>
+           <div> <input type='text' name="paintHeight" value="" placeholder="Height"/></div>
+           <div> <input type='text' name="paintWidth" value="" placeholder="Width"/></div>
+           <div> <input type="number" name="paintPrice" value="" placeholder="Price"/></div>
+           <div> <input type='text' name="description" value="" placeholder="Description"/></div>
+           <div> <input type='text' name="paintID" value="" placeholder="Painting ID"/></div>
+
+            <input type='submit' name='submitPainting'/>
+
+
+        </form>
+    </div>
+
+
+<?php
+
     }
 ?>
 

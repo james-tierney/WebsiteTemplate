@@ -47,3 +47,17 @@ input:focus:invalid {
     border-color: red;   /* css file hasnt updated on the server so commented code above for empty field hasn't registered either as well as this line */
 
 }
+
+div .leftDiv {
+    float:left;
+}
+
+div .rightDiv {
+    float:right;
+}
+
+#adminForm, #adminTable {
+    display: inline-block;
+    float:left;
+    padding: 1em;
+}
