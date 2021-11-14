@@ -22,7 +22,7 @@
 <?php
     $host = "devweb2021.cis.strath.ac.uk";
     $user = "cxb19188";
-    $pass = "lohqu1PhaeSh";
+    $pass = "Aev2Eeceiwef";
     $dbname = $user;
     $conn = new mysqli($host, $user, $pass, $dbname);
     //session_start();
@@ -66,43 +66,44 @@
 
 
 
+<div id="orderForm" style="padding: 4rem">
+    <form action="orderform.php" id="orderForm" method="POST">
+        <?php //echo "id val = ".$_POST['idValue'];
+        //echo "name still = ".$name;?>
+        <div>
+            <input type = "text" id="name" name = "name" value ="" required placeholder="Please enter your name"/>
+                <label for="name">Name</label>
+        </div>
 
-<form action="orderform.php" id="orderForm" method="POST">
-    <?php //echo "id val = ".$_POST['idValue'];
-    //echo "name still = ".$name;?>
-    <div>
-        <input type = "text" id="name" name = "name" value ="" required placeholder="Please enter your name"/>
-            <label for="name">Name</label>
-    </div>
+        <div>
+              <input type = "text" id="phone_number"name = "phone_number" value ="" placeholder="Enter a valid Phone Number"/>
+                <label for="phone_number">Phone Number</label>
+        </div>
 
-    <div>
-          <input type = "text" id="phone_number"name = "phone_number" value ="" placeholder="Enter a valid Phone Number"/>
-            <label for="phone_number">Phone Number</label>
-    </div>
+        <div>
+              <input type="email" id="email" name="email" value="" required placeholder="Enter a valid email address"/>
+                <label for="email">Email</label>
 
-    <div>
-          <input type="email" id="email" name="email" value="" required placeholder="Enter a valid email address"/>
-            <label for="email">Email</label>
+        </div>
 
-    </div>
+        <div>
+            <input type="text" id="address" name="address" value="" placeholder="Please Enter your address"/>
+                <label for="address">Address</label>
+        </div>
 
-    <div>
-        <input type="text" id="address" name="address" value="" placeholder="Please Enter your address"/>
-            <label for="address">Address</label>
-    </div>
+            <input id="ID" type="hidden" name="IDValue" value=<?php echo $idVal;?> >
+            <script>
+                console.log(document.getElementById('ID').value);
+            </script>
+            <!--<input id="Name" type="hidden" name="paintName" value=<?php//$name; ?> > -->
 
-        <input id="ID" type="hidden" name="IDValue" value=<?php echo $idVal;?> >
-        <script>
-            console.log(document.getElementById('ID').value);
-        </script>
-        <!--<input id="Name" type="hidden" name="paintName" value=<?php//$name; ?> > -->
-
-        <p>
-            <input type="submit" name="submit" value="Submit" onclick=location.href="index.php">
-        </p>
+            <p>
+                <input type="submit" name="submit" value="Submit" onclick=location.href="index.php" ">
+            </p>
 
 
-</form>
+    </form>
+</div>
 
 </body>
 </html>

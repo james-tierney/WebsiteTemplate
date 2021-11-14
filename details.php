@@ -29,7 +29,7 @@
         });
     </script>
 </head>
-<body>
+<body style="background-color: cornflowerblue">
 
 <script>
 
@@ -78,7 +78,7 @@
 // Connect to MySQL
 $host = "devweb2021.cis.strath.ac.uk";
 $user = "cxb19188";
-$pass = "lohqu1PhaeSh";
+$pass = "Aev2Eeceiwef";
 $dbname = $user;
 $conn = new mysqli($host,$user,$pass,$dbname);
 
@@ -121,7 +121,7 @@ if($result->num_rows > 0) {
         echo "<td>".$image."</td>\n";
         //echo "<img src='data:image/jpeg;base64,".base64_encode($row['thumbnail'])."'/>";
         //echo "<td>".'<img src="data:image/jpeg;base64,'.base64_encode($row['thumbnail']->load()) .'" />'."</td>";
-        print '<td> <button id="button" name="idButton"<a href="artlisting.php?id=button" onclick="saveID(' .$row['ID'].')">Order</a>  </td>';
+        print '<td> <button id="button" name="idButton"<a href="artlisting.php?id=button" style="border-radius: 8px; background-color: #008CBA; " onclick="saveID(' .$row['ID'].')">Order</a>   </td>';
         echo "</tr>\n";
         echo "</p></b>";
 

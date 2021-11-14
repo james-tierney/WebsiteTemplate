@@ -108,7 +108,7 @@
     }
 
     // lets try sort a formula of some sort for the pagination
-    $numPerPage = 3;
+    $numPerPage = 12;
     $offset = ($pageNum-1) * $numPerPage;
 
     // get the number of total pages
@@ -130,6 +130,7 @@
         echo "<b> <tr class='active-row'>";
         echo "<td><b>Name</b></td>";
         echo "<td><b>Price</b></td>";
+        echo "<td><b>More</b></td>";
         echo "</tr>";
 
         echo "</thead>";
@@ -144,23 +145,11 @@
             echo "</p>";
         }
 
-        /* while($curRow = $qResult->fetch_assoc()) {
-            echo "<p>";
-            echo "<b><tr>\n";
-            echo "<td>".$curRow['Name']."</td>\n";
-            echo "<td>".$curRow['Price']."</td>\n";
-            print '<td> <button id="moreButton" name="moreButton" onclick=redirect("details.php")>More </td>';
-            echo "</tr>";
-            echo "</p>";
-        } */
         echo "</table>\n";
-        echo "</div>";
+       // echo "</div>";
     }
 
-    /*while($row = mysqli_fetch_array($resultData)) {
-        echo "NAME = ".$row[0];
-    } */
-    echo "sql = ".$sql;
+
     ?>
 
     <ul class="pagination">
@@ -175,35 +164,9 @@
     </ul>
 
     <?php
-    $sql = "SELECT * FROM `ArtSystem`";
-    $result = $conn->query($sql);
-    if($result->num_rows > 0) {
-        echo "<div id='light-pagination' class='pagination'>";
-        echo "<table id='myTable' onclick='handleClick(event)' class='styled-table'>\n";
-        echo "<b> </b><thead>";
-        echo "<b> <tr class='active-row'>";
-        echo "<td><b>Name</td>";
-        echo "<td><b>Price</td>";
-        echo "<b></tr>";
-
-
-        echo "<b></thead>";
-        $count = 0;
-        while ($row = $result->fetch_assoc()) {
-            echo "<p>";
-            echo "<b><tr>\n";
-            echo "<td>".$row['Name']."</td>\n";
-            echo "<td>".$row['Price']."</td>\n";
-            print '<td> <button id="moreButton" name="moreButton" onclick=redirect("details.php") >More </td>';
-            //print '<td> <button id="button" name="idButton"<a href="artlisting.php?id=button" onclick="saveID('.$row['ID'].')">More</a>  </td>';
-            echo "</tr>\n";
-            echo "</p></b>";
-
-        }
-    echo "</table>\n";
-    echo "</div>";
+    echo "</div>";  // allows the buttons to be under table lets try style them better pos wise
     mysqli_close($conn);
-    }
+
 
     $conn = new mysqli($host,$user,$pass,$dbname);
 

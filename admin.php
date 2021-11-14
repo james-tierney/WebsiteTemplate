@@ -30,7 +30,7 @@
     //Connect to MySQL
     $host = "devweb2021.cis.strath.ac.uk";
     $user = "cxb19188";
-    $pass = "lohqu1PhaeSh";
+    $pass = "Aev2Eeceiwef";
     $dbname = $user;
     $conn = new mysqli($host, $user, $pass, $dbname);
     $correctPass = 'caraART21';
