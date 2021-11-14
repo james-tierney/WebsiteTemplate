@@ -5,8 +5,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href=form.css rel="stylesheet" type="text/css">
-
+    <script src="//code.jquery.com/jquery.min.js"></script>
     <!-- remember add in the jquery part to keep the navbar consistently throughout all pages in the site  -->
+    <div id="divNavBar" >
+
+    </div>
+
+    <script>
+        $(document).ready(function(){
+            $('#divNavBar').load("headerNav.html");
+        });
+    </script>
 
 </head>
 <body>
@@ -58,7 +67,7 @@
 
 
 
-<form  action="orderform.php" id="orderForm" method="POST">
+<form action="orderform.php" id="orderForm" method="POST">
     <?php //echo "id val = ".$_POST['idValue'];
     //echo "name still = ".$name;?>
     <div>
@@ -89,7 +98,7 @@
         <!--<input id="Name" type="hidden" name="paintName" value=<?php//$name; ?> > -->
 
         <p>
-            <input type="submit" name="submit" value="Submit">
+            <input type="submit" name="submit" value="Submit" onclick=location.href="index.php">
         </p>
 
 

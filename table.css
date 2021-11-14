@@ -1,6 +1,14 @@
 
 
 
+body {
+    padding-top: 5rem;
+}
+
+#divNavBar {
+    padding-bottom: 5rem;
+}
+
 .styled-table {
     border-collapse: collapse;
     margin: 25px 0;

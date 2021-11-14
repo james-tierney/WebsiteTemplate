@@ -11,6 +11,16 @@
     <title>ArtWork System Admin</title>
     <link href="form.css" rel="stylesheet" type="text/css">
     <link href="table.css" rel="stylesheet" type="text/css">
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <div id="divNavBar" >
+
+    </div>
+
+    <script>
+        $(document).ready(function(){
+            $('#divNavBar').load("headerNav.html");
+        });
+    </script>
 </head>
 <body>
 
@@ -102,6 +112,31 @@
                     echo "<td>" . $row['Address'] . "</td>\n";
                     echo "<td>" . $row['Painting_name'] . "</td>\n";
                     echo "<td>" . $row['ID'] . "</td>\n";
+                }
+            }
+            echo "</table>\n";
+            $sql = "SELECT * FROM `TrackAndTrace`";
+            $result = $conn->query($sql);
+            if ($result->num_rows > 0) {
+                // `Name`, `Phone_num`, `Email`, `Address`, `Painting_name`, `ID`
+                echo "<table id='trackTable' class='styled-table'>\n";
+                echo "<b> </b><thead>";
+                echo "<b> <tr class='active-row'>";
+                echo "<td><b>Name</td>";
+                echo "<td><b>Phone Number</td>";
+                echo "<td><b>Appointment Time</td>";
+                echo "<b></tr>";
+
+
+                echo "<b></thead>";
+                $count = 0;
+                while ($row = $result->fetch_assoc()) {
+                    echo "<p>";
+                    echo "<b><tr>\n";
+                    echo "<td>" . $row['Name'] . "</td>\n";
+                    echo "<td>" . $row['Phone_number'] . "</td>\n";
+                    echo "<td>" . $row['Appointment_time'] . "</td>\n";
+
                 }
             }
             echo "</table>\n";
