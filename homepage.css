@@ -1,0 +1,42 @@
+body {
+    /*background: linear-gradient(to top, #66ee88, transparent),url(images/riverTrees.png) no-repeat center center fixed; */
+    background: url(images/skyviewOfRiver.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+p {
+    font-family: sans-serif;
+    color: white;
+}
+
+#homeHeading h1 h2 {
+    font-family: Tahoma;
+    color: white
+}
+section .topSection
+{
+
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    background: white;
+    z-index: 1000;
+}
+
+.sec
+{
+    position: relative;
+    padding: 100px;
+    background: transparent ;
+
+}
+.sec h2
+{
+    font-size: 3.5em;
+    margin-bottom: 10px;
+    color: #fff;
+}
