@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>ArtWork System</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="slider.css">
+
+    <!--<link rel="stylesheet" type="text/css" href="homepage.css"> -->
+    <link rel="stylesheet" type="text/css" href="tester.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- remember add in the jquery part to keep the navbar consistently throughout all pages in the site  -->
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+
+    <style>
+        .description .box:hover {
+            box-shadow: 0.3rem 0.5rem rgba(0,0,0,0.3);
+        }
+        .description .box p {
+            font-size: 1vw;
+            color: black;
+            padding:1rem 0;
+            justify-content: center;
+        }
+        .description .box {
+            text-align: center;
+            border: 0.2rem solid #0d9979;
+            margin: 2rem;
+            width: auto;
+            justify-content: center;
+            height: auto;
+            background: #fff;
+        }
+    </style>
+
+
+</head>
+<body style="height: auto; background-color: #04AA6D; ">
+<div id="divNavBar" >
+
+
+</div>
+
+
+
+<script>
+    $(document).ready(function(){
+        $('#divNavBar').load("headerNav.html");
+    });
+</script>
+
+
+<section class="home" id="home">
+    <div class="content">
+        <h1>Cara's Art</h1>
+        <p>Hi I am Cara and I have had a passion for art, for around 8 years now. It's not my full time source of income just a little hobby of mine
+            that I am really passionate about and what to share with others, so I thought I would through this website
+        </p>
+        <p>My main focus for my art is nature and the environment I love to create pieces related to nature and all that is around us.
+            I really enjoy doing seasonal pieces which usually involve me finding a nice spot each season of the year and capturing the view in front of me through my art.
+        </p>
+        <button class="previewButton" onclick="document.getElementById('slideshow').scrollIntoView();">See Preview</button> <!-- can be used to take user down the page to the image slideshow -->
+    </div>
+</section>
+
+<section class="section" >
+    <div class="container" style="margin-top:50px;">
+
+        <div class="description">
+            <div class="box">
+                <p>Hi I am Cara and I have had a passion for art, for around 8 years now. It's not my full time source of income just a little hobby of mine
+                    that I am really passionate about and what to share with others, so I thought I would through this website
+                </p>
+
+            </div>
+
+
+            <div class="box">
+                <p>My main focus for my art is nature and the environment I love to create pieces related to nature and all that is around us.
+                    I really enjoy doing seasonal pieces which usually involve me finding a nice spot each season of the year and capturing the view in front of me through my art.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section" >
+    <div class="sec" align="center">
+        <h2><b>A Preview Of Some Of Cara's Work</b></h2>
+        <div id="slideshow" class="container_slideshow" style="margin-bottom: 0.5rem;">
+            <div class="container_slide">
+                <div class="slid_1"><img src="images/trees.jpeg"></div>
+                <div class="slid_2"><img src="images/riverTrees.png"></div>
+                <div class="slid_3"><img src="images/nature.jpg"></div>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+<div class="footer">
+
+    <div class="box-container">
+        <div class="box" style="position: center" ">
+            <img id=logoList src="images/cara'sLogo.png">
+            <p class="logoImage">Cara's Art</p>
+        </div>
+
+
+
+
+        <div class="box" id="updater">
+             <h3 id="footerHeader" class="updates">Get Updated</h3>
+            <form action="">
+                <input type="email" placeholder="Enter Your Email To Get Updates" >
+                <button type="submit" >Get Updated</button>
+            </form>
+        </div>
+    </div>
+
+
+
+    <h2 class="cara">All Images Are Cara's Work | For Any Enquiries Contact Cara </h2>
+
+</section>
+
+<script>
+    window.onbeforeunload = function () {
+        window.scrollTo(0,0);
+    }
+</script>
+
+</body>
+
+</html>
