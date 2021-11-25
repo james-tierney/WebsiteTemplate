@@ -6,22 +6,35 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
         <script src="//code.jquery.com/jquery.min.js"></script>
-        <!-- remember add in the jquery part to keep the navbar consistently throughout all pages in the site  -->
+    <style>#logoList img {
+        height: auto;
+        width: auto;
+        padding-top: 5px;
+        max-height: 45px;
+        max-width: 250px;
+
+    }</style>
+
 </head>
 
 <body>
 
-<nav id="navBar" class="navbar navbar-inverse navbar-fixed-top">
+<nav id="navBar"  class="navbar navbar-inverse navbar-fixed-top">
 
-        <!--<div class="navbar-header">
-            <a class="navbar-brand" href="#">WebSiteName</a>
-        </div> -->
-        <ul class="nav navbar-nav">
+        <ul  class="nav navbar-nav">
             <li class="active"  ><a href="index.php" >Home</a></li>
-            <li><a href="artlisting.php">Art Listing</a></li>
+            <li><a href="listart.php">Art Listing</a></li>
             <li><a href="track&trace.php">Track & Trace</a></li>
             <li><a href="admin.php">Admin</a></li>
+
         </ul>
+
+        <ul id="logoList" class="nav navbar-nav navbar-right" style="padding-right: 2rem">
+            <li><img src="images/cara'sLogo.png"></li>
+            <li><a href="#"> Cara's Art</a></li>
+        </ul>
+
+
 </nav>
 
 <script> // code attribution https://stackoverflow.com/questions/24514717/bootstrap-navbar-active-state-not-working
