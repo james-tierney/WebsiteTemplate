@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+    <!-- Note For marker Images are similar plus a screenshot as some others where too
+    big a file size and there for dont display properly for my blob type in my db :)
+    -->
+
+
     <meta charset="UTF-8">
     <title>Art Listing</title>
     <link href=table.css rel="stylesheet" type="text/css">
@@ -105,8 +111,8 @@
             echo "<td>".$row[0]."</td>\n";
             echo "<td>".$row[4]."</td>\n";
             $id = $row[6];
-
-            echo "<td>"."<img alt=".$row['Description'].". src='data:image/jpeg;base64,".base64_encode($row[7])." >' </td>";
+            echo '<td> <img alt='.$row["Description"].' src="data:image/jpeg;base64,'.base64_encode($row['thumbnail']).' "> </td>';
+            //echo "<td>"."<img alt=".$row['Description'].". src='data:image/jpeg;base64,".base64_encode($row[7])." >' </td>";
             print '<td> <button id="moreButton" name="moreButton1"  value="'.$row[6].'"   onclick="saveID(' . $row[6] . ')">More</button></td>';
             echo "</tr>";
             echo "</p>";
