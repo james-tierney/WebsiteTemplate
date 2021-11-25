@@ -227,38 +227,39 @@
     if(($_SERVER['REQUEST_METHOD'] === 'POST') && (isset($_POST['submitPainting']))) {
 
 
-        if(empty($_POST['paintName']) || empty($_POST['completeDate']) || empty($_POST['paintHeight']) || empty($_POST['paintHeight']) <= 0 || empty($_POST['paintWidth']) <= 0 || empty($_POST['paintWidth']) || empty($_POST['paintPrice']) || empty($_POST['description']) || empty($_POST['paintID']) || $_POST['paintPrice'] < 0 || $_POST['paintID'] < 0) {
+        if(empty($_POST['paintName']) || empty($_POST['completeDate']) || empty($_POST['paintHeight']) || ($_POST['paintHeight']) <= 0 || ($_POST['paintWidth']) <= 0 || empty($_POST['paintWidth']) || empty($_POST['paintPrice']) || empty($_POST['description']) || empty($_POST['paintID']) || $_POST['paintPrice'] < 0 || $_POST['paintID'] < 0) {
+
             if(empty($_POST['paintName'])) {
                 $nameErr = "Please enter a name for the painting";
             }
-            if(empty($_POST['completeDate'])) {
+            else if(empty($_POST['completeDate'])) {
                 $dateErr = "Please enter the date of completion";
             }
-            if(empty($_POST['paintHeight'])) {
+            else if(empty($_POST['paintHeight'])) {
                 $heightErr = "Please enter a valid height";
             }
-            if(empty($_POST['paintWidth'])) {
+            else if(empty($_POST['paintWidth'])) {
                 $widthErr = "Please enter a valid width";
             }
-            if(empty($_POST['paintPrice'])) {
+            else if(empty($_POST['paintPrice'])) {
                 $priceErr = "Please enter a price";
             }
-            if(empty($_POST['description'])) {
+            else if(empty($_POST['description'])) {
                 $descriptionErr = "Please enter a description";
             }
-            if(empty($_POST['paintID'])) {
+            else if(empty($_POST['paintID'])) {
                 $IDErr = "Please enter an ID ";
             }
-            if($_POST['paintHeight'] <= 0) {
+            else if($_POST['paintHeight'] <= 0) {
                 $heightErr = "Enter a height greater than 0";
             }
-            if($_POST['paintWidth'] <= 0) {
+            else if($_POST['paintWidth'] <= 0) {
                 $widthErr = "Enter a width greater than 0";
             }
-            if($_POST['paintPrice'] < 0) {
+            else if($_POST['paintPrice'] < 0) {
                 $priceErr = "Please enter a non-negaitve price";
             }
-            if($_POST['paintID'] < 0) {
+            else if($_POST['paintID'] < 0) {
                 $IDErr = "Enter a non-negative ID ";
             }
 
@@ -269,9 +270,9 @@
 
             $res = mysqli_query($conn, $query);
             if ($res) {
-                echo "INSERT DONE";
+                echo "<p style='color: white;'>INSERT DONE</p>";
             } else {
-                echo "INSERT FAILED";
+                echo "<p style='color: white;'>INSERT FAILED</p>";
             }
 
         }
