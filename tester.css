@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap');
+
+:root{
+    --green:#0d9979;
+}
+
+*{
+    font-family: 'Open Sans', sans-serif;
+    margin:0; padding:0;
+    box-sizing: border-box;
+    text-transform: capitalize;
+    text-decoration: none;
+    transition: all .5s cubic-bezier(.37,1.14,.26,1.24);
+}
+
+*::selection{
+    background:var(--green);
+    color:#fff;
+}
+.section {
+    background-color: #04AA6D;
+}
+
+html{
+    font-size: 62.5%;
+    overflow-x: hidden;
+}
+
+.previewButton{
+    height:3.5rem;
+    width:15rem;
+    background: var(--green);
+    color:white;
+    border-color: #04AA6D ;
+    font-size: 2rem;
+    margin:1rem 0;
+    cursor: pointer;
+    overflow: hidden;
+    z-index: 0;
+    position: relative;
+}
+
+
+
+.home{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 80%;
+    background: url(images/skyviewOfRiver.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.home .content{
+    text-align: center;
+    padding:1rem;
+}
+
+.home .content h1{
+    font-weight: bold;
+    font-size: 7rem;
+    opacity: 100%;
+    color: white;
+}
+
+.home .content p{
+    font-weight: bold;
+    opacity: 100%;
+    font-size: 1.9rem;
+    color: white;
+    padding:1rem 0;
+    width: 70rem;
+}
+
+.footer{
+    background:#333;
+}
+
+.footer .box-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 95%;
+    margin:0 auto;
+}
+
+.footer .box-container .box{
+    margin:2rem;
+    flex:1 1 25rem;
+}
+
+.logoImage{
+    font-size: 3rem;
+    color: white;
+    position: center;
+    padding: 2rem;
+
+
+}
+
+.footer .box-container .box p{
+    font-size: 1.7rem;
+    color:#ccc;
+    padding:1rem 0;
+}
+
+
+.footer .box-container .box .updates{
+    font-size: 3rem;
+    color:#fff;
+}
+
+#footerHeader {
+    position: center;
+}
+
+.footer .box-container .box form input {
+    padding: 0 1rem;
+    border:.2rem solid var(--green);
+    background:none;
+    font-size: 1.5rem;
+    color:#fff;
+    position: center;
+    height:4rem;
+    width:50%;
+}
+
+.footer .box-container .box form button{
+
+    background:var(--green);
+    font-size: 1.9rem;
+    color:#fff;
+    height:4rem;
+    position: center;
+    width:35%;
+    border: none;
+    outline: none;
+}
+
+.footer  #updater{
+    position: center;
+
+
+}
+
+#logoList {
+     position: center;
+     height: auto;
+     width: auto;
+     padding-right: 10rem;
+     max-height: 45px;
+     max-width: 250px;
+ }
+
+.footer .box-container .box form button:hover{
+    color:var(--green);
+    background:none;
+    border:.1rem solid var(--green);
+}
+
+.footer .cara{
+    text-align: center;
+    color: white;
+    font-size: 2.5rem;
+    padding:2rem 1rem;
+    width: 85%;
+    margin: 0 auto;
+    border-top: .1rem solid #ccc;
+}

@@ -9,68 +9,122 @@ tr {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
-.styled-table {
-    border-collapse: collapse;
-    margin: 25px 0;
-    font-size: 0.9em;
-    font-family: sans-serif;
-    min-width: 400px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+.description .box:hover {
+    box-shadow: 0.3rem 0.5rem rgba(0,0,0,0.3);
 }
 
-.styled-table thead tr {
-    background-color: #009879;
-    color: #ffffff;
-    text-align: left;
+
+
+.description .box p {
+    color: #666;
+    font-size: 1vw;
+    padding:1rem 0;
+    justify-content: center;
+
 }
 
-.styled-table th,
-.styled-table td {
-    padding: 12px 15px;
-}
-
-.styled-table tbody tr {
-    border-bottom: 1px solid #dddddd;
-}
-
-.styled-table tbody tr:nth-of-type(even) {
-    background-color: #f3f3f3;
-}
-
-.styled-table tbody tr:last-of-type {
-    border-bottom: 2px solid #009879;
-}
-
-.styled-table tbody tr.active-row {
-    font-weight: bold;
-    color: #009879;
-}
-/* Add a black background color to the top navigation
-.navbar a {
-    background-color: #333;
-    overflow: hidden;
-}
-
-/* Style the links inside tha nav bar
-.navbar a {
-    float: left;
-    color: #f2f2f2;
+.description .box {
+    /*padding: 2rem 1rem; */
     text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
+
+    border: 0.2rem solid #0d9979;
+    margin: 2rem;
+    width: 10%;
+    justify-content: center;
+    height: 20%;
+
+    cursor: pointer;
+    background: #fff;
+
 }
 
-/* Change the color of the links on hover
-.navbar a {
-    background-color: #ddd;
+#detailsHeading h1 {
+    position: center;
+    justify-content: center;
+    background-color: deeppink;
+    display: flex;
+}
+#backButton button {
+    margin: 2rem;
+}
+
+button:hover{
+    color: #2AAA50;
+    background:none;
+    border:.1rem solid #2AAA50;
+}
+
+
+#moreButton {
+    background: #2AAA50;
+    border-color: #04AA6D;
+    color: white;
+    cursor: pointer;
+    overflow: hidden;
+    z-index: 0;
+    position: relative;
+}
+
+.detailsButton {
+    height:3.5rem;
+    width:15rem;
+    background: #2AAA50;
+    /*border:.2rem solid var(--green); */
+    color:white;
+    border-color: #04AA6D ;
+
+    font-size: 2rem;
+    margin:1rem 0;
+    cursor: pointer;
+    overflow: hidden;
+    z-index: 0;
+    position: relative;
+}
+
+.box {
+    min-width: 200px;
+    min-height: 200px;
+    text-align: center;
+    display: inline-block;
+}
+
+
+.description  {
+
+    text-align: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+}
+
+
+.description .box {
+    background: #f0f0f0;
+    text-align: center;
+    justify-content: center;
+    border-color: #04AA6D;
+    overflow: hidden;
+
+}
+
+.description .box p {
     color: black;
 }
 
-/* Add a color to activate the current link
-.navbar a.activeLink {
-    background-color: #04AA6D;
+#detailsHeader {
+
+    text-align: center;
+    margin-top: 0.5rem;
+    font-weight: 900;
     color: white;
+    letter-spacing: 1px;
+    text-shadow: 0 .2rem black, 0 .2rem ;
+
 }
 
- */
+body {
+    background: -webkit-linear-gradient(left, #25c481, #25b7c4);
+    background:  linear-gradient(to right, #25c481, #25b7c4);
+    margin: 2rem;
+}
