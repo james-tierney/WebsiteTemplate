@@ -1,24 +1,17 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <title>ArtWork System</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href=form.css rel="stylesheet" type="text/css">
-    <script src="//code.jquery.com/jquery.min.js"></script>
-    <!-- remember add in the jquery part to keep the navbar consistently throughout all pages in the site  -->
-    <div id="divNavBar" >
 
-    </div>
+    <style>
+        body {
+            background: url(images/mistyForrest.jpg) center center no-repeat  fixed;
+            height: 100%;
+        }
+    </style>
 
-    <script>
-        $(document).ready(function(){
-            $('#divNavBar').load("headerNav.html");
-        });
-    </script>
-
-</head>
-<body>
 <?php
     $host = "devweb2021.cis.strath.ac.uk";
     $user = "cxb19188";
@@ -27,7 +20,11 @@
     $conn = new mysqli($host, $user, $pass, $dbname);
     //session_start();
     $idVal = "";
-
+    $nameErr = "";
+    $phoneError = "";
+    $emailError = "";
+    $addressErr = "";
+    $name = "";
     function safePOST($conn, $fieldName)
     {
         if (isset($_POST[$fieldName])) {
@@ -37,68 +34,134 @@
         }
     }
 
-
-    if( ($_SERVER['REQUEST_METHOD'] === "POST") && (!isset($_POST['submit'])) ) {
+    if($_SERVER['REQUEST_METHOD'] === 'POST' && !isset($_POST['submit'])) {
         $idVal = $_POST['idValue'];
+        $name = $conn->query("SELECT Name FROM `ArtSystem` WHERE ID = $idVal")->fetch_object()->Name;
     }
-    else if( ($_SERVER['REQUEST_METHOD'] === "POST") && (isset($_POST['submit'])) ) {
+
+     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
         $idVal = $_POST['IDValue'];
         $name = $conn->query("SELECT Name FROM `ArtSystem` WHERE ID = $idVal")->fetch_object()->Name;
+        $pattern = "/^(\+44\s?7\d{3}|\(?07\d{3}\)?)\s?\d{3}\s?\d{3}$/";
+        $noError = true;
+        if (!(preg_match($pattern, $_POST['phone_number']))) {
+            $phoneError = "Please Enter A Valid UK Phone Number";
 
-        // safely get all values to be inserted into the db
-        $dbName = safePOST($conn, "name");
-        $dbPhoneNum = safePOST($conn, "phone_number");
-        $dbEmail = safePOST($conn, "email");
-        $dbAddress = safePOST($conn, "address");
-        echo "Order Placed";
-        /*
-         * Once order is submitted could take user to page saying order was submitted
-         */
-        $sql = "INSERT INTO `ArtOrders` (`Name`, `Phone_num`, `Email`, `Address`, `Painting_name`, `ID`) VALUES ('$dbName', '$dbPhoneNum', '$dbEmail', '$dbAddress', '$name', '$idVal')";
+        }
+        else if(empty($_POST['name'])) {
+            $nameErr = "Please enter a name";
+        }
+        else if(empty($_POST['address'])) {
+            $addressErr = "Please enter an address";
+        }
+        else if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+            $emailError= "ERR: Email format invalid";
+        }
+        else {
 
-        $result = mysqli_query($conn, $sql);
 
 
+            // safely get all values to be inserted into the db
+            $dbName = safePOST($conn, "name");
+            $dbPhoneNum = safePOST($conn, "phone_number");
+            $dbEmail = safePOST($conn, "email");
+            $dbAddress = safePOST($conn, "address");
+            echo "<p style='color: white; font-size: 5rem;'>Order Placed</p>";
+
+
+
+            $sql = "INSERT INTO `ArtOrders` (`Name`, `Phone_num`, `Email`, `Address`, `Painting_name`, `ID`) VALUES ('$dbName', '$dbPhoneNum', '$dbEmail', '$dbAddress', '$name', '$idVal')";
+
+            $result = mysqli_query($conn, $sql);
+            if($result) {
+                //echo "SUCCESSFUL ";
+            }
+            else {
+                //echo "NOT SUCCESSFUL";
+            }
+            exit();
+
+        }
     }
 
-// what happens if we set hidden id val then set it = to id val from before and submit that val check if method === post and submit is set then new var for id = POST[IDValue]? and then select the name
+
 ?>
 
 
 
-<div id="orderForm" style="padding: 4rem">
-    <form action="orderform.php" id="orderForm" method="POST">
-        <?php //echo "id val = ".$_POST['idValue'];
-        //echo "name still = ".$name;?>
+<script src="//code.jquery.com/jquery.min.js"></script>
+
+
+
+
+<script>
+    $(document).ready(function(){
+        $('#divNavBar').load("headerNav.html");
+    });
+</script>
+
+
+
+</head>
+<body>
+
+<div id="divNavBar" >
+
+</div>
+
+
+<script src="validation.js"> // put in file of its own and just call script tag and this function for all the forms
+
+</script>
+
+<div id="orderFormDiv"  class="container">
+    <form action="orderform.php" id="orderForm" class="form-container" method="POST">
+
+        <div class="logo"></div>
+
+            <h1 class="orderHeader">Order Form</h1>
+
         <div>
-            <input type = "text" id="name" name = "name" value ="" required placeholder="Please enter your name"/>
-                <label for="name">Name</label>
+            <span style="color: white; background: red;" class="error"><?php echo $nameErr;?></span>
+            <label for="name">Name</label>
+            <input type = "text" id="name" name = "name" value ="<?php if(isset($_POST['name'])) {echo $_POST['name'];}?>" required placeholder="Please enter your name"/>
+
         </div>
 
         <div>
-              <input type = "text" id="phone_number"name = "phone_number" value ="" placeholder="Enter a valid Phone Number"/>
-                <label for="phone_number">Phone Number</label>
-        </div>
-
-        <div>
-              <input type="email" id="email" name="email" value="" required placeholder="Enter a valid email address"/>
-                <label for="email">Email</label>
+            <span style="color:white; background:red;" class="error"><?php echo $phoneError;?></span>
+            <label for="phone_number">Phone Number</label>
+            <input type = "text" id="phone_number" name = "phone_number"  value ="<?php if(isset($_POST['phone_number'])) {echo $_POST['phone_number'];}?>" required placeholder="Enter a valid Phone Number"/>
 
         </div>
 
         <div>
-            <input type="text" id="address" name="address" value="" placeholder="Please Enter your address"/>
-                <label for="address">Address</label>
+            <span style="color:white; background:red;" class="error"><?php echo $emailError;?></span>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" value="<?php if(isset($_POST['email'])) {echo $_POST['email'];}?>"  required placeholder="Enter a valid email address"/>
+
+
         </div>
 
-            <input id="ID" type="hidden" name="IDValue" value=<?php echo $idVal;?> >
-            <script>
-                console.log(document.getElementById('ID').value);
-            </script>
-            <!--<input id="Name" type="hidden" name="paintName" value=<?php//$name; ?> > -->
+        <div>
+            <span style="color:white; background:red;" class="error"><?php echo $addressErr; ?></span>
+            <label for="address">Address</label>
+            <input type="text" id="address" name="address" value="<?php if(isset($_POST['address'])) {echo $_POST['address'];}?>" required placeholder="Please Enter your address"/>
+
+        </div>
+
+        <div>
+            <label for="paintName">Painting Name</label>
+            <input type="text" id="paintName" name="paintName" required value="<?php echo $name;?>">
+        </div>
+
+        <div>
+            <label for="ID">ID</label>
+            <input id="ID" type="text" name="IDValue" required value="<?php echo $idVal;?>" >
+        </div>
 
             <p>
-                <input type="submit" name="submit" value="Submit" onclick=location.href="index.php" ">
+                <button  type="submit" name="submit" value="Submit" onsubmit="return checkForm();" >Submit</button> <!--onclick=location.href="index.php"-->
             </p>
 
 
